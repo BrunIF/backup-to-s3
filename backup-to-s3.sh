@@ -10,11 +10,6 @@ do
     mysqldump -u$DATABASEUSER -p$DATABASEPASSWORD ${i} > ${DATABASEDIR}${i}.sql
 done
 
-
-# database backup
-DATABASEDIR=$DATABASEDIR
-DATABASENAME=$DATABASENAME
-
 # Set up some variables for logging
 HOST=`hostname`
 DATE=`date +%Y-%m-%d`
@@ -31,15 +26,6 @@ trace () {
 # Export some ENV variables so you don't have to type anything
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-
-# How long to keep backups for
-OLDER_THAN=$OLDER_THAN
-
-# The source of your backup
-SOURCE=$SOURCE
-
-# The destination on S3 or something else
-DEST=$DEST
 
 FULL=
 if [ $(date +%d) -eq 1 ]; then

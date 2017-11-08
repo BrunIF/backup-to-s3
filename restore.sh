@@ -4,9 +4,11 @@ source backup.conf
 
 if [ $# -lt 3 ]; then echo "Usage format $0 <date> <file> <restore-to>"; exit; fi
 
+export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+
 duplicity \
-    --encrypt-key=${GPG_KEY} \
-    --sign-key=${GPG_KEY} \
+    --no-encryption \
     --file-to-restore $2 \
     --restore-time $1 \
     ${DEST} $3
