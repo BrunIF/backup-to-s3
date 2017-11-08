@@ -9,6 +9,8 @@ export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
 duplicity \
     --no-encryption \
+    --archive-dir /root/backup/duplicity \
+    --tempdir /root/backup/tmp \
     --file-to-restore $2 \
     --restore-time $1 \
     ${DEST} $3

@@ -43,6 +43,8 @@ trace "... backing up filesystem"
 duplicity \
     ${FULL} \
     --no-encryption \
+    --archive-dir /root/backup/duplicity \
+    --tempdir /root/backup/tmp \
     --volsize=250 \
     ${SOURCE} ${DEST} >> ${DAILYLOGFILE} 2>&1
 
