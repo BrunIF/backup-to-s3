@@ -2,6 +2,15 @@
 
 source backup.conf
 
+# Backup databases 
+mkdir -p $DATABASEDIR
+
+for i in "${DATABASENAME[@]}"
+do
+    mysqldump -u$DATABASEUSER -p$DATABASEPASSWORD ${i} > ${DATABASEDIR}${i}.sql
+done
+
+
 # database backup
 DATABASEDIR=$DATABASEDIR
 DATABASENAME=$DATABASENAME

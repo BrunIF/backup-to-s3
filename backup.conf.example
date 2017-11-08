@@ -1,6 +1,8 @@
 # database backup dir
 DATABASEDIR="/home/db/"
 DATABASENAME=("db1" "db2" "db3")
+DATABASEUSER=root
+DATABASEPASSWORD=pa$$w0rd
 
 # log files
 LOGFILE="/var/log/backup.log"
