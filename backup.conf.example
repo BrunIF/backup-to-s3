@@ -1,0 +1,25 @@
+# database backup dir
+DATABASEDIR="/home/db/"
+DATABASENAME=("db1" "db2" "db3")
+
+# log files
+LOGFILE="/var/log/backup.log"
+DAILYLOGFILE="/var/log/backup.daily.log"
+
+# Mail to address
+# Change to Youremail address
+MAILADDR="i.bronovskyi@ukietech.com"
+
+# AWS Credentials 
+# Create on Your AWS Console -> IAM
+AWS_ACCESS_KEY_ID=""
+AWS_SECRET_ACCESS_KEY=""
+
+# Set How long will be avaible Full backup
+# In example 3 month
+OLDER_THAN="3M"
+
+# Set folder path which need to backup
+SOURCE=/home/
+
+DEST="s3://s3-us-west-2.amazonaws.com/bucket-name/server-name/"
