@@ -40,6 +40,8 @@ duplicity remove-older-than ${OLDER_THAN} ${DEST} >> ${DAILYLOGFILE} 2>&1
 
 trace "... backing up filesystem"
 
+mkdir -p /root/backup/tmp
+
 duplicity \
     ${FULL} \
     --no-encryption \
