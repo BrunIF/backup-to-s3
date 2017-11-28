@@ -10,6 +10,7 @@ mkdir -p $DATABASEDIR
 if [[ -z "$DATABASENAME" ]]
 then
     DATABASENAME=$(echo "show databases" | mysql -Bs | grep -Ev "^(mysql|performance_schema|information_schema|sys|forge)$")
+    DATABASENAME=(${DATABASENAME// / })
 fi
 
 for i in "${DATABASENAME[@]}"
