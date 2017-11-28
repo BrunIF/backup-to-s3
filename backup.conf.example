@@ -1,6 +1,9 @@
 # database backup dir
 DATABASEDIR="/home/db/"
+
+# If value empty will be Backup all database without the system databases
 DATABASENAME=("db1" "db2" "db3")
+
 DATABASEUSER=root
 DATABASEPASSWORD=pa$$w0rd
 
@@ -23,5 +26,14 @@ OLDER_THAN="3M"
 
 # Set folder path which need to backup
 SOURCE=/home/
+# Amazon simple storage 
+# Region - us-west-2
+# Bucket URL - bucket-name
+# Folder on S3 Bucket - server-name-folder
+DEST="s3://s3-us-west-2.amazonaws.com/bucket-name/server-name-folder/"
 
-DEST="s3://s3-us-west-2.amazonaws.com/bucket-name/server-name/"
+# Temporary directory for Duplicity
+TEMPDIR="/root/backup/tmp"
+
+# Archive directory for Duplicity
+ARCHIVEDIR="/root/backup/duplicity"

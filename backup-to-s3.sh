@@ -1,9 +1,16 @@
 #!/bin/bash
 
+cd /root/backup
+
 source backup.conf
 
 # Backup databases 
 mkdir -p $DATABASEDIR
+
+if [[ -z "$DATABASENAME" ]]
+then
+    DATABASENAME=$(echo "show databases" | mysql -Bs | grep -Ev "^(mysql|performance_schema|information_schema|sys|forge)$")
+fi
 
 for i in "${DATABASENAME[@]}"
 do
@@ -40,13 +47,13 @@ duplicity remove-older-than ${OLDER_THAN} ${DEST} >> ${DAILYLOGFILE} 2>&1
 
 trace "... backing up filesystem"
 
-mkdir -p /root/backup/tmp
+mkdir -p $TEMPDIR
 
 duplicity \
     ${FULL} \
     --no-encryption \
-    --archive-dir /root/backup/duplicity \
-    --tempdir /root/backup/tmp \
+    --archive-dir $ARCHIVEDIR \
+    --tempdir $TEMPDIR \
     --volsize=250 \
     ${SOURCE} ${DEST} >> ${DAILYLOGFILE} 2>&1
 

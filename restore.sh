@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/root/backup
+
 source backup.conf
 
 if [ $# -lt 3 ]; then echo "Usage format $0 <date> <file> <restore-to>"; exit; fi
@@ -7,12 +9,12 @@ if [ $# -lt 3 ]; then echo "Usage format $0 <date> <file> <restore-to>"; exit; f
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
-mkdir -p /root/backup/tmp
+mkdir -p $TEMPDIR
 
 duplicity \
     --no-encryption \
     --archive-dir /root/backup/duplicity \
-    --tempdir /root/backup/tmp \
+    --tempdir $TEMPDIR \
     --file-to-restore $2 \
     --restore-time $1 \
     ${DEST} $3
